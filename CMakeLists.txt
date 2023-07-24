@@ -7,20 +7,21 @@ project(
   HOMEPAGE_URL "https://github.com/wpumacay/TerrainRLSim"
   LANGUAGES C CXX)
 
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+
 add_library(TerrainRLUtil
-  #### ${PROJECT_SOURCE_DIR}/util/ArgParser.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/BVHReader.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/FileUtil.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/IndexManager.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/JsonUtil.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/MathUtil.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/MotionDB.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/PerlinNoise.cpp
+  ${PROJECT_SOURCE_DIR}/util/ArgParser.cpp
+  ${PROJECT_SOURCE_DIR}/util/BVHReader.cpp
+  ${PROJECT_SOURCE_DIR}/util/FileUtil.cpp
+  ${PROJECT_SOURCE_DIR}/util/IndexManager.cpp
+  ${PROJECT_SOURCE_DIR}/util/JsonUtil.cpp
+  ${PROJECT_SOURCE_DIR}/util/MathUtil.cpp
+  ${PROJECT_SOURCE_DIR}/util/MotionDB.cpp
+  ${PROJECT_SOURCE_DIR}/util/PerlinNoise.cpp
   ${PROJECT_SOURCE_DIR}/util/Rand.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/Trajectory.cpp
+  ${PROJECT_SOURCE_DIR}/util/Trajectory.cpp
   ${PROJECT_SOURCE_DIR}/util/Util.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/json/json_reader.cpp
-  #### ${PROJECT_SOURCE_DIR}/util/json/json_writer.cpp
 )
 target_include_directories(TerrainRLUtil PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(TerrainRLUtil PUBLIC ${PROJECT_SOURCE_DIR}/util)
+target_link_libraries(TerrainRLUtil PUBLIC Eigen3::Eigen)
